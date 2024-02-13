@@ -14,6 +14,21 @@ export class AuthService {
     return this.http.get(this.url+"Companies", {headers:headers})
   }
 
+  getUsers(){
+    let headers= new HttpHeaders().set("Authorization","Bearer "+this.token)
+    return this.http.get(this.url+"userlist", {headers:headers})
+  }
+
+  getClaims(id:any){
+    let headers= new HttpHeaders().set("Authorization","Bearer "+this.token)
+    return this.http.get(this.url+"userClaims/"+id, {headers:headers})
+  }
+  setClaims(id:any, claims:any){
+    let body={id:id, roles:claims}
+    let headers= new HttpHeaders().set("Authorization","Bearer "+this.token)
+    return this.http.post(this.url+"userClaims/",body, {headers:headers})
+  }
+
   addCompany(company:any){
     let headers= new HttpHeaders().set("Authorization","Bearer "+this.token)
     return this.http.post(this.url+"Companies",company, {headers:headers})
@@ -42,4 +57,7 @@ export class AuthService {
       }
     )
   }
+
+
+
 }
