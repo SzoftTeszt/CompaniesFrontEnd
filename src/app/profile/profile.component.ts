@@ -9,6 +9,8 @@ import { AuthService } from '../auth.service';
 export class ProfileComponent {
   regModel:any={}
   currentUser:any={}
+  newPassword1:any
+  newPassword2:any
 
   constructor(private auth:AuthService){
     this.auth.getCurrentUser().subscribe(
@@ -29,5 +31,16 @@ export class ProfileComponent {
   update(){
     this.regModel.id=this.currentUser.id
     this.auth.update(this.regModel)
+  }
+
+  changePassword(){
+    if (this.newPassword1==this.newPassword2){
+      let body={
+        id:this.currentUser.id,
+        currentPassword:"qasasa",
+        newPassword:this.newPassword1
+      }
+      this.auth.changePassword(body)
+    }
   }
 }

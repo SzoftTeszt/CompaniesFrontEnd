@@ -62,15 +62,25 @@ export class AuthService {
       headers: new HttpHeaders().set("Authorization","Bearer "+this.token),
       'responseType':'text'
     }
-    // let headers= new HttpHeaders()
-    // .set("Authorization","Bearer "+this.token)
-    // .set('responseType','text')
-    console.log(head)
     this.http.post("https://localhost:5001/api/Authentication/update",user, head)
     .subscribe(
       {
         next:()=>console.log("Sikeres Update"),
         error:()=>console.log("Sikertelen  Update")
+      }
+    )
+  }
+  changePassword(newPassword:any){
+    let head:any ={
+      headers: new HttpHeaders({"Authorization":"Bearer "+this.token}),  
+      'responseType':'text'
+    }
+    console.log(newPassword)
+    this.http.post("https://localhost:5001/api/Authentication/change",newPassword, head)
+    .subscribe(
+      {
+        next:()=>console.log("Sikeres Jelszóvált"),
+        error:()=>console.log("Sikertelen   Jelszóvált")
       }
     )
   }

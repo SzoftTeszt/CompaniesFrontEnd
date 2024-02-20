@@ -31,6 +31,19 @@
         <input [(ngModel)]="regModel.password" type="password" class="form-control" id="password" placeholder="Password">
         <label for="password">Password</label>
       </div> -->
-      <button (click)="update()" type="button" class="btn btn-primary">Update</button>
+      <button (click)="update()" type="button" class="btn btn-primary mb-3">Update</button>
+    
+      
+    <div class="form-floating">
+        <input [(ngModel)]="newPassword1" type="password" class="form-control" id="password1" placeholder="Password">
+        <label for="password1">Password</label>
+      </div>
+    <div class="form-floating">
+        <input [(ngModel)]="newPassword2" type="password" class="form-control" id="password2" placeholder="Password">
+        <label for="password2">Password</label>
+      </div>
+    <button (click)="changePassword()" type="button" class="btn btn-primary mb-3">Change Password</button>
+    
+    
     </div>
   </div>
