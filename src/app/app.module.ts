@@ -9,13 +9,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SinginComponent } from './singin/singin.component';
+import { SingupComponent } from './singup/singup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserListComponent,
-    NavbarComponent
+    NavbarComponent,
+    SinginComponent,
+    SingupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

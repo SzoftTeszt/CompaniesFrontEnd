@@ -1,0 +1,36 @@
+<div class="card" style="width: 18rem;">
+   
+    <div class="card-body">
+      <h5 class="card-title">Register</h5>
+      
+      <div class="form-floating mb-3">
+        <input type="text" [(ngModel)]="regModel.username" class="form-control" id="username">
+        <label for="username">username</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" [(ngModel)]="regModel.firstName" class="form-control" id="firstName">
+        <label for="firstName">firstName</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" [(ngModel)]="regModel.lastName" class="form-control" id="lastNamee">
+        <label for="lastName">lastName</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="regModel.email" type="email" class="form-control" id="email" placeholder="name@example.com">
+        <label for="email">Email address</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="text" [(ngModel)]="regModel.address" class="form-control" id="address">
+        <label for="address">address</label>
+      </div>
+
+      
+      <div class="form-floating">
+        <input [(ngModel)]="regModel.password" type="password" class="form-control" id="password" placeholder="Password">
+        <label for="password">Password</label>
+      </div>
+      <button (click)="register()" type="button" class="btn btn-primary">Register</button>
+    </div>
+  </div>
