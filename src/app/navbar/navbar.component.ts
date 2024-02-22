@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   currentUser:any
+  SAdmin=false
   constructor(private auth:AuthService, private router:Router){
     this.auth.getCurrentUser().subscribe(
       (user)=>this.currentUser=user
+    )
+    this.auth.SadminSub.subscribe(
+      (res)=> this.SAdmin=res
     )
   }
 

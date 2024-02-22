@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SinginComponent } from './singin/singin.component';
 import { SingupComponent } from './singup/singup.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
     NavbarComponent,
     SinginComponent,
     SingupComponent,
-    ProfileComponent
+    ProfileComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

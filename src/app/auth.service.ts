@@ -10,12 +10,14 @@ export class AuthService {
   private token=""
   private user:any={}
   private userSub= new BehaviorSubject(null)
+  public SadminSub= new BehaviorSubject<boolean>(false)
 
   constructor(private http:HttpClient) { }
 
   logout(){
     this.token=""
     this.user=null
+    this.SadminSub.next(false)
     this.userSub.next(null)
   }
 
@@ -80,7 +82,7 @@ export class AuthService {
     .subscribe(
       {
         next:()=>console.log("Sikeres Jelszóvált"),
-        error:()=>console.log("Sikertelen   Jelszóvált")
+        error:()=>console.log("Sikertelen Jelszóvált")
       }
     )
   }
@@ -97,7 +99,9 @@ export class AuthService {
           console.log("Sikeres Login", this.token)
           this.getClaims(this.user.id).subscribe(
             (claims)=> {
+              if (!claims) claims=[]
               this.user.claims=claims
+              this.SadminSub.next(this.user.claims.includes('SAdmin'))
               this.userSub.next(this.user)
             }
 
