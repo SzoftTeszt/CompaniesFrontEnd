@@ -13,6 +13,7 @@ import { SinginComponent } from './singin/singin.component';
 import { SingupComponent } from './singup/singup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorComponent } from './error/error.component';
+import { TesztComponent } from './teszt/teszt.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ErrorComponent } from './error/error.component';
     SinginComponent,
     SingupComponent,
     ProfileComponent,
-    ErrorComponent
+    ErrorComponent,
+    TesztComponent
   ],
   imports: [
     BrowserModule,

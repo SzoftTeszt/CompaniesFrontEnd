@@ -7,13 +7,16 @@ import { SingupComponent } from './singup/singup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { sAdminGuard } from './sadmin.guard';
 import { ErrorComponent } from './error/error.component';
+import { TesztComponent } from './teszt/teszt.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
   {path:"signin", component:SinginComponent},
   {path:"signup", component:SingupComponent},
   {path:"profile", component:ProfileComponent},
+  {path:"profile/:id", component:ProfileComponent},
   {path:"userlist", component:UserListComponent, canActivate:[sAdminGuard]},
+  {path:"teszt", component:TesztComponent},
   {path:"**", component:ErrorComponent},
 ];
 

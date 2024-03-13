@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -9,7 +10,7 @@ import { AuthService } from '../auth.service';
 export class UserListComponent {
   users:any=[]
   jogok=["SAdmin","Admin","User"]
-  constructor(private auth:AuthService){
+  constructor(private auth:AuthService, private router: Router){
     this.auth.getUsers().subscribe(
       (res)=>{
         this.users=res
@@ -53,6 +54,10 @@ export class UserListComponent {
         }
       )
     }
+  }
+
+  profile(id:any){
+    this.router.navigate(['/profile/'+id])
   }
 
 }

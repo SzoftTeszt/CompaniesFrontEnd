@@ -34,6 +34,10 @@ export class AuthService {
     let headers= new HttpHeaders().set("Authorization","Bearer "+this.token)
     return this.http.get(this.url+"userlist", {headers:headers})
   }
+  getUser(id:any){
+    let headers= new HttpHeaders().set("Authorization","Bearer "+this.token)
+    return this.http.get(this.url+"user/"+id, {headers:headers})
+  }
 
   getClaims(id:any){
     let headers= new HttpHeaders().set("Authorization","Bearer "+this.token)
@@ -60,25 +64,22 @@ export class AuthService {
     )
   }
   update(user:any){
+    console.log("update",user)
     let head:any ={
       headers: new HttpHeaders().set("Authorization","Bearer "+this.token),
       'responseType':'text'
     }
-    this.http.post("https://localhost:5001/api/Authentication/update",user, head)
-    .subscribe(
-      {
-        next:()=>console.log("Sikeres Update"),
-        error:()=>console.log("Sikertelen  Update")
-      }
-    )
+    return this.http.put("https://localhost:5001/api/user/"+user.id,user, head)
+    
+    
   }
   changePassword(newPassword:any){
     let head:any ={
       headers: new HttpHeaders({"Authorization":"Bearer "+this.token}),  
       'responseType':'text'
     }
-    console.log(newPassword)
-    this.http.post("https://localhost:5001/api/Authentication/change",newPassword, head)
+    console.log("MI ez? ",newPassword)
+    this.http.put("https://localhost:5001/api/user/changePassword/"+newPassword.id,newPassword, head)
     .subscribe(
       {
         next:()=>console.log("Sikeres Jelszóvált"),
@@ -86,6 +87,24 @@ export class AuthService {
       }
     )
   }
+
+  changeMyPassword(newPassword:any){
+    let head:any ={
+      headers: new HttpHeaders({"Authorization":"Bearer "+this.token}),  
+      'responseType':'text'
+    }
+    console.log(newPassword)
+    //newPassword.id=this.user.id;
+    this.http.put("https://localhost:5001/api/user/changeMyPassword/",newPassword, head)
+    .subscribe(
+      {
+        next:()=>console.log("Sikeres Jelszóvált"),
+        error:()=>console.log("Sikertelen Jelszóvált")
+      }
+    )
+  }
+
+
 
   login(user:any){
     this.http.post(this.url+"Authentication/login",user)
